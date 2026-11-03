@@ -1,13 +1,13 @@
 :root {
-  --cream: #f8f1e4;
-  --cream-2: #f2e7d3;
-  --paper: #fffaf1;
+  --cream: #fcfbf8;
+  --cream-2: #f3f0eb;
+  --paper: #ffffff;
   --ink: #4a3b30;
   --muted: #8a7766;
   --gold: #b48a4e;
-  --gold-soft: #d9c29a;
+  --gold-soft: #e3d5bd;
   --red: #9c2f3a;
-  --line: rgba(180, 138, 78, 0.35);
+  --line: rgba(180, 138, 78, 0.28);
   --script: "Dancing Script", cursive;
   --serif: "Playfair Display", Georgia, serif;
   --sans: "Be Vietnam Pro", system-ui, sans-serif;
@@ -43,8 +43,8 @@ button { font: inherit; cursor: pointer; }
   margin: 0 auto;
   background: var(--cream);
   background-image:
-    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.6), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(217, 194, 154, 0.18), transparent 45%);
+    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.8), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(227, 213, 189, 0.12), transparent 45%);
   box-shadow: 0 0 40px rgba(74, 59, 48, 0.12);
   overflow: hidden;
 }
@@ -104,7 +104,7 @@ button { font: inherit; cursor: pointer; }
   position: relative;
   overflow: hidden;
   background:
-    repeating-linear-gradient(45deg, rgba(180, 138, 78, 0.07) 0 10px, transparent 10px 20px),
+    repeating-linear-gradient(45deg, rgba(180, 138, 78, 0.05) 0 10px, transparent 10px 20px),
     var(--cream-2);
   border: 0;
   padding: 0;
@@ -138,7 +138,7 @@ button { font: inherit; cursor: pointer; }
   padding: 48px 28px 40px;
   border: 1px solid var(--line);
   outline: 1px solid var(--line); outline-offset: 6px;
-  background: rgba(255, 250, 241, 0.7);
+  background: rgba(255, 255, 255, 0.75);
 }
 .envelope__label { text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.72rem; color: var(--muted); }
 .envelope__names { font-size: 2.9rem; color: var(--ink); margin: 14px 0 6px; line-height: 1.15; }
@@ -160,7 +160,7 @@ button { font: inherit; cursor: pointer; }
   position: absolute; left: 0; right: 0; bottom: 0;
   padding: 120px 20px 48px;
   text-align: center;
-  background: linear-gradient(to top, var(--cream) 18%, rgba(248, 241, 228, 0.85) 45%, transparent);
+  background: linear-gradient(to top, var(--cream) 18%, rgba(252, 251, 248, 0.85) 45%, transparent);
 }
 .hero__kicker { font-family: var(--serif); font-style: italic; letter-spacing: 0.25em; text-transform: uppercase; font-size: 0.8rem; color: var(--gold); }
 .hero__names { font-size: 3.2rem; line-height: 1.1; margin: 8px 0; color: var(--ink); }
@@ -307,7 +307,7 @@ button { font: inherit; cursor: pointer; }
 .footer__overlay {
   position: absolute; left: 0; right: 0; bottom: 0;
   padding: 120px 20px 44px;
-  background: linear-gradient(to top, var(--cream) 30%, rgba(248, 241, 228, 0.8) 60%, transparent);
+  background: linear-gradient(to top, var(--cream) 30%, rgba(252, 251, 248, 0.8) 60%, transparent);
 }
 .footer__thanks { font-size: 3rem; color: var(--red); line-height: 1.2; }
 .footer__names { font-family: var(--serif); font-size: 1.1rem; letter-spacing: 0.1em; margin-top: 4px; color: var(--gold); }
