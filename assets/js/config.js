@@ -16,7 +16,7 @@ window.WEDDING = {
     father: "Bùi Dũng",
     mother: "Lê Thị Thuý Nga",
     // Địa chỉ nhà trai (để trống nếu không muốn hiển thị)
-    address: "275, ngõ 42, phố Thịnh Liệt, Hoàng Mai, Hà Nội",
+    address: "",
     bio: "", // vài dòng giới thiệu chú rể (tuỳ chọn)
   },
   bride: {
@@ -24,7 +24,7 @@ window.WEDDING = {
     shortName: "Hương Giang",
     father: "Nguyễn Cao Sơn",
     mother: "Ngô Thị Hạnh",
-    address: "Số nhà 845, Tổ 12 Phố Cò, Đ. Cách Mạng Tháng Tám, Sông Công, Thái Nguyên",
+    address: "",
     bio: "",
   },
 
