@@ -35,9 +35,9 @@ window.WEDDING = {
   events: {
     groom: [
       {
-        title: "Lễ Thành Hôn",
+        title: "Tiệc Cưới",
         start: "2026-11-29T11:00:00+07:00",
-        end: "2026-11-29T12:00:00+07:00",
+        end: "2026-11-29T14:00:00+07:00",
         weekday: "Chủ Nhật",
         lunar: "Tức ngày 21 tháng 10 năm Bính Ngọ",
         venue: "Trống Đồng Palace Cảnh Hồ",
@@ -46,9 +46,9 @@ window.WEDDING = {
         map: "Trống Đồng Palace Cảnh Hồ, 173B Đ. Trường Chinh, Phương Liệt, Hà Nội",
       },
       {
-        title: "Tiệc Cưới",
+        title: "Lễ Thành Hôn",
         start: "2026-11-29T11:00:00+07:00",
-        end: "2026-11-29T14:00:00+07:00",
+        end: "2026-11-29T12:00:00+07:00",
         weekday: "Chủ Nhật",
         lunar: "Tức ngày 21 tháng 10 năm Bính Ngọ",
         venue: "Trống Đồng Palace Cảnh Hồ",
