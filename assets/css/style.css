@@ -142,7 +142,7 @@ button { font: inherit; cursor: pointer; }
 }
 .envelope__label { text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.72rem; color: var(--muted); }
 .envelope__names { font-size: 2.9rem; color: var(--ink); margin: 14px 0 6px; line-height: 1.15; }
-.envelope__names span { display: block; }
+.envelope__names span { display: block; white-space: nowrap; }
 .envelope__names .amp { display: block; font-size: 1.8rem; }
 .envelope__date { font-family: var(--serif); letter-spacing: 0.25em; color: var(--gold); margin-bottom: 26px; }
 .envelope__guest {
@@ -164,6 +164,8 @@ button { font: inherit; cursor: pointer; }
 }
 .hero__kicker { font-family: var(--serif); font-style: italic; letter-spacing: 0.25em; text-transform: uppercase; font-size: 0.8rem; color: var(--gold); }
 .hero__names { font-size: 3.2rem; line-height: 1.1; margin: 8px 0; color: var(--ink); }
+.hero__names span { display: block; white-space: nowrap; }
+.hero__names .amp { font-size: 1.9rem; line-height: 1; margin: 2px 0; }
 .hero__date { font-family: var(--serif); letter-spacing: 0.2em; color: var(--red); }
 
 /* ---------- Gia đình ---------- */
