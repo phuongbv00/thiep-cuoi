@@ -277,33 +277,6 @@ button { font: inherit; cursor: pointer; }
 .lightbox__prev { left: 4px; top: 50%; transform: translateY(-50%); }
 .lightbox__next { right: 4px; top: 50%; transform: translateY(-50%); }
 
-/* ---------- RSVP ---------- */
-.form { text-align: left; margin-top: 22px; display: flex; flex-direction: column; gap: 14px; }
-.form label { display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem; font-weight: 500; }
-.form input:not([type=radio]), .form select, .form textarea {
-  font: inherit; font-weight: 400; color: var(--ink);
-  padding: 11px 14px; border-radius: 10px;
-  border: 1px solid var(--line); background: var(--paper);
-  outline: none; width: 100%;
-}
-.form input:focus, .form select:focus, .form textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(180, 138, 78, 0.15); }
-.form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.choice { border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
-.choice legend { font-size: 0.85rem; font-weight: 500; margin-bottom: 6px; }
-.choice label { flex-direction: row; align-items: center; gap: 10px; font-weight: 400; }
-.choice input { accent-color: var(--red); width: 18px; height: 18px; }
-.form__status { text-align: center; color: var(--red); min-height: 1.4em; font-size: 0.9rem; }
-
-/* ---------- Mừng cưới ---------- */
-.gifts__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 22px; }
-.gift { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 18px 10px; }
-.gift__label { font-family: var(--serif); color: var(--red); font-size: 0.95rem; margin-bottom: 10px; }
-.photo--qr { width: 120px; height: 120px; margin: 0 auto 10px; border-radius: 8px; background-color: #fff; }
-.photo--qr img { object-fit: contain; }
-.gift__bank { font-size: 0.78rem; color: var(--muted); }
-.gift__name { font-size: 0.8rem; font-weight: 600; }
-.gift__acc { font-family: var(--serif); font-size: 1.05rem; letter-spacing: 0.05em; margin-bottom: 10px; }
-
 /* ---------- Kết ---------- */
 .footer { position: relative; height: 520px; text-align: center; }
 .photo--footer { position: absolute; inset: 0; }
@@ -355,6 +328,6 @@ button { font: inherit; cursor: pointer; }
 
 @media (max-width: 360px) {
   .section { padding: 48px 16px; }
-  .families__grid, .couple__grid, .gifts__grid { gap: 10px; }
+  .families__grid, .couple__grid { gap: 10px; }
   .hero__names { font-size: 2.7rem; }
 }

@@ -16,7 +16,7 @@ window.WEDDING = {
     father: "Bùi Dũng",
     mother: "Lê Thị Thuý Nga",
     // Địa chỉ nhà trai (để trống nếu không muốn hiển thị)
-    address: "",
+    address: "275, ngõ 42, phố Thịnh Liệt, Hoàng Mai, Hà Nội",
     bio: "", // vài dòng giới thiệu chú rể (tuỳ chọn)
   },
   bride: {
@@ -108,31 +108,4 @@ window.WEDDING = {
   // Nhạc nền (mp3). Để trống "" nếu không dùng.
   music: "music/song.mp3",
 
-  /*
-   * Xác nhận tham dự (RSVP): dán URL Web App của Google Apps Script
-   * (xem hướng dẫn trong README.md). Để trống thì form chỉ hiện lời cảm ơn
-   * mà KHÔNG lưu dữ liệu.
-   */
-  rsvpEndpoint: "",
-
-  /*
-   * Hộp mừng cưới. Để mảng rỗng [] nếu không muốn hiển thị mục này.
-   * qr: đường dẫn ảnh QR (images/qr-groom.png ...)
-   */
-  gifts: [
-    {
-      label: "Mừng cưới chú rể",
-      bank: "Tên ngân hàng",
-      accountName: "BUI VIET PHUONG",
-      accountNumber: "0000000000",
-      qr: "images/qr-groom.png",
-    },
-    {
-      label: "Mừng cưới cô dâu",
-      bank: "Tên ngân hàng",
-      accountName: "NGUYEN HUONG GIANG",
-      accountNumber: "0000000000",
-      qr: "images/qr-bride.png",
-    },
-  ],
 };

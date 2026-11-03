@@ -134,8 +134,6 @@
     });
     renderCalendar(s);
     startCountdown(s);
-    var sel = $('#rsvpForm select[name="side"]');
-    if (sel) sel.value = s === "gai" ? "Nhà gái" : "Nhà trai";
   }
 
   /* ---------- Lịch ---------- */
@@ -237,72 +235,6 @@
     if (e.key === "Escape") lb.hidden = true;
     if (e.key === "ArrowLeft") showLb(lbIndex - 1);
     if (e.key === "ArrowRight") showLb(lbIndex + 1);
-  });
-
-  /* ---------- Mừng cưới ---------- */
-  if (!W.gifts || !W.gifts.length) {
-    $("#giftSection").remove();
-  } else {
-    $("#gifts").innerHTML = W.gifts.map(function (g) {
-      return (
-        '<div class="gift">' +
-        '<p class="gift__label">' + esc(g.label) + "</p>" +
-        '<div class="photo photo--qr" data-label="Mã QR" data-src="' + esc(g.qr || "") + '"></div>' +
-        '<p class="gift__bank">' + esc(g.bank) + "</p>" +
-        '<p class="gift__name">' + esc(g.accountName) + "</p>" +
-        '<p class="gift__acc">' + esc(g.accountNumber) + "</p>" +
-        '<button type="button" class="btn btn--ghost btn--sm" data-copy="' + esc(g.accountNumber) + '">Sao chép số tài khoản</button>' +
-        "</div>"
-      );
-    }).join("");
-    $$("#gifts [data-src]").forEach(function (el) { loadPhoto(el, el.getAttribute("data-src")); });
-    $("#gifts").addEventListener("click", function (e) {
-      var b = e.target.closest("[data-copy]");
-      if (!b) return;
-      var txt = b.getAttribute("data-copy");
-      var done = function () {
-        var old = b.textContent;
-        b.textContent = "Đã sao chép ✓";
-        setTimeout(function () { b.textContent = old; }, 1600);
-      };
-      if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done, done); else done();
-    });
-  }
-
-  /* ---------- RSVP ---------- */
-  var form = $("#rsvpForm"), status = $("#rsvpStatus");
-  if (guest) form.elements.name.value = guest;
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    if (!form.elements.name.value.trim()) {
-      status.textContent = "Bạn vui lòng nhập họ tên nhé.";
-      form.elements.name.focus();
-      return;
-    }
-    var btn = $("button[type=submit]", form);
-    var data = new URLSearchParams(new FormData(form));
-    data.append("invite", side || "chung");
-    data.append("time", new Date().toISOString());
-    var thanks = function () {
-      status.textContent = form.elements.attend.value === "Có"
-        ? "Cảm ơn bạn! Hẹn gặp bạn trong ngày vui của chúng tôi 💕"
-        : "Cảm ơn lời chúc của bạn! 💕";
-      form.reset();
-      btn.disabled = false;
-    };
-    if (!W.rsvpEndpoint) {
-      console.warn("[RSVP] Chưa cấu hình rsvpEndpoint trong config.js — dữ liệu chưa được lưu.", Object.fromEntries(data));
-      thanks();
-      return;
-    }
-    btn.disabled = true;
-    status.textContent = "Đang gửi...";
-    fetch(W.rsvpEndpoint, { method: "POST", mode: "no-cors", body: data })
-      .then(thanks)
-      .catch(function () {
-        status.textContent = "Gửi chưa thành công, bạn thử lại giúp mình nhé.";
-        btn.disabled = false;
-      });
   });
 
   /* ---------- Nhạc nền ---------- */

@@ -8,9 +8,7 @@ Website thiệp cưới tĩnh (HTML/CSS/JS thuần, không cần build), nền m
 - Thông tin lễ/tiệc theo từng bên, nút **Chỉ đường** (Google Maps) và **Lưu vào lịch** (Google Calendar), bản đồ nhúng
 - Lịch tháng 11/2026 + đồng hồ đếm ngược
 - Album ảnh có xem phóng to
-- Form xác nhận tham dự (RSVP) gửi về Google Sheets
-- Hộp mừng cưới (QR + số tài khoản, nút sao chép)
-- Nhạc nền, hiệu ứng cánh hoa rơi
+- Nhạc nền (Canon in D – Pachelbel, bản piano tự tổng hợp, không vướng bản quyền), hiệu ứng cánh hoa rơi
 
 ## Link gửi khách
 | Link | Hiển thị |
@@ -33,16 +31,3 @@ Mở http://localhost:8000
 ## Đăng lên GitHub Pages
 Settings → Pages → Source: *Deploy from a branch* → chọn nhánh và thư mục `/ (root)`.
 
-## Lưu RSVP vào Google Sheets
-1. Tạo Google Sheet, hàng 1 ghi: `time | name | attend | guests | side | invite | message`
-2. Extensions → Apps Script, dán:
-   ```js
-   function doPost(e) {
-     var sh = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
-     var p = e.parameter;
-     sh.appendRow([p.time, p.name, p.attend, p.guests, p.side, p.invite, p.message]);
-     return ContentService.createTextOutput("ok");
-   }
-   ```
-3. Deploy → New deployment → Web app → *Execute as: Me*, *Who has access: Anyone* → copy URL
-4. Dán URL vào `rsvpEndpoint` trong `config.js`

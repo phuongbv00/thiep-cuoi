@@ -10,6 +10,5 @@ Chép ảnh vào thư mục này với đúng tên dưới đây (định dạng
 | `couple.jpg` | Ảnh đôi ở phần lời mời | Ảnh ngang 4:3 |
 | `footer.jpg` | Ảnh kết thiệp | Ảnh dọc/ngang đều được |
 | `album-01.jpg` … `album-09.jpg` | Album | Ảnh 01 và 06 hiển thị lớn |
-| `qr-groom.png`, `qr-bride.png` | QR mừng cưới | Ảnh QR ngân hàng |
 
 Nên nén ảnh (rộng ~1200–1600px, < 500KB/ảnh) để thiệp mở nhanh trên điện thoại.
