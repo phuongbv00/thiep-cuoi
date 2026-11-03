@@ -14,18 +14,16 @@ Website thiệp cưới tĩnh (HTML/CSS/JS thuần, không cần build), nền m
 | Tham số | Giá trị | Ý nghĩa |
 |---|---|---|
 | `side` | `groom` / `bride` | Thiệp nhà trai / nhà gái. Bỏ trống: hiện cả hai bên, có tab chuyển |
-| `guest` | tên khách | Hiện "Thân mời …" / "Dear …" (không bắt buộc) |
-| `lang` | `vi` / `en` | Ngôn ngữ mặc định khi mở (khách vẫn bấm VI/EN để đổi) |
+| `guest` | tên khách | Hiện "Thân mời …" (không bắt buộc) |
 
 Ví dụ:
 - Nhà trai: `?side=groom&guest=Anh%20Nam`
 - Nhà gái: `?side=bride&guest=C%C3%B4%20Lan`
-- Khách nước ngoài: `?side=groom&guest=John&lang=en`
 
 Dấu cách trong tên viết `%20`. Link cũ dạng `?ben=trai&to=...` vẫn chạy.
 
 ## Chỉnh nội dung
-Thông tin cưới nằm trong `assets/js/config.js`, chữ cố định song ngữ trong `assets/js/i18n.js`.
+Mọi nội dung nằm trong `assets/js/config.js`.
 Sau khi sửa CSS/JS, tăng số `?v=` trong `index.html` để trình duyệt của khách tải bản mới. Ảnh: xem `images/README.md`. Nhạc: đặt file `music/song.mp3`.
 
 ## Chạy thử

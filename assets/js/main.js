@@ -2,14 +2,12 @@
   "use strict";
 
   var W = window.WEDDING;
-  var I18N = window.I18N || {};
   var params = new URLSearchParams(location.search);
 
-  // Tham số URL: side=groom|bride, guest=..., lang=vi|en (vẫn nhận ben/to cũ)
+  // Tham số URL: side=groom|bride, guest=... (vẫn nhận ben/to cũ)
   var SIDES = { groom: "groom", bride: "bride", trai: "groom", gai: "bride" };
   var side = SIDES[(params.get("side") || params.get("ben") || "").toLowerCase()] || null;
   var guest = (params.get("guest") || params.get("to") || "").trim();
-  var lang = (params.get("lang") || "").toLowerCase() === "en" ? "en" : "vi";
   var curSide = side || "groom";
 
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
@@ -22,17 +20,29 @@
     });
   };
   var upper = function (s) { return String(s).toLocaleUpperCase("vi-VN"); };
-  function t(key) {
-    var d = I18N[lang] || {};
-    return key in d ? d[key] : (I18N.vi || {})[key] || "";
-  }
-  function localized(ev) { return lang === "en" && ev.en ? Object.assign({}, ev, ev.en) : ev; }
+  var STR = {
+    dear: "Thân mời",
+    groomFamily: "Nhà trai",
+    brideFamily: "Nhà gái",
+    mr: "Ông",
+    mrs: "Bà",
+    groom: "Chú rể",
+    bride: "Cô dâu",
+    guestDefault: "Quý khách",
+    inviteGroom: "Tới dự bữa tiệc chung vui cùng gia đình chúng tôi tại Hà Nội",
+    inviteBride: "Tới dự bữa tiệc chung vui cùng gia đình chúng tôi tại Thái Nguyên",
+    directions: "Chỉ đường",
+    addCalendar: "Lưu vào lịch",
+    calInvite: "Trân trọng kính mời bạn tới dự {event} của {couple}.",
+    dow: ["T2", "T3", "T4", "T5", "T6", "T7", "CN"],
+  };
+  function t(key) { return STR[key]; }
 
   // Thiệp nhà gái: tên cô dâu và gia đình nhà gái đứng trước
   var first = side === "bride" ? W.bride : W.groom;
   var second = side === "bride" ? W.groom : W.bride;
 
-  /* ---------- Chữ cố định + gia đình (vẽ lại khi đổi ngôn ngữ) ---------- */
+  /* ---------- Tên, gia đình ---------- */
   function familyCol(label, p) {
     return (
       '<div class="family">' +
@@ -49,10 +59,6 @@
   }
 
   function renderStatic() {
-    document.documentElement.lang = lang;
-    $$("[data-i18n]").forEach(function (el) { el.textContent = t(el.getAttribute("data-i18n")); });
-    $$("[data-i18n-html]").forEach(function (el) { el.innerHTML = t(el.getAttribute("data-i18n-html")); });
-
     var binds = {
       firstName: first.shortName,
       secondName: second.shortName,
@@ -79,11 +85,6 @@
       '<div class="couple-names__heart">&amp;</div>' +
       (side === "bride" ? groomHtml : brideHtml));
 
-    $$(".lang-switch [data-lang]").forEach(function (b) {
-      var on = b.getAttribute("data-lang") === lang;
-      b.classList.toggle("active", on);
-      b.setAttribute("aria-pressed", on ? "true" : "false");
-    });
   }
 
   /* ---------- Sự kiện ---------- */
@@ -107,8 +108,7 @@
   function mapLink(ev) {
     return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(ev.map || ev.address);
   }
-  function eventCard(raw) {
-    var ev = localized(raw);
+  function eventCard(ev) {
     var p = parts(ev.start);
     return (
       '<article class="event">' +
@@ -129,8 +129,7 @@
     );
   }
   function mapEmbed(query) {
-    return '<div class="map"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="' + t("mapTitle") +
-      '" src="https://maps.google.com/maps?q=' + encodeURIComponent(query) + "&z=16&hl=" + lang + '&output=embed"></iframe></div>';
+    return '<div class="map"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Bản đồ" src="https://maps.google.com/maps?q=' + encodeURIComponent(query) + '&z=16&output=embed"></iframe></div>';
   }
 
   function renderEvents(s) {
@@ -194,7 +193,7 @@
     cdTimer = setInterval(tick, 1000);
   }
 
-  /* ---------- Khởi tạo + đổi ngôn ngữ ---------- */
+  /* ---------- Khởi tạo ---------- */
   renderStatic();
   if (side) {
     renderEvents(side);
@@ -207,16 +206,6 @@
     renderEvents("groom");
   }
 
-  $$(".lang-switch [data-lang]").forEach(function (b) {
-    b.addEventListener("click", function () {
-      lang = b.getAttribute("data-lang");
-      var u = new URL(location.href);
-      if (lang === "vi") u.searchParams.delete("lang"); else u.searchParams.set("lang", lang);
-      history.replaceState(null, "", u);
-      renderStatic();
-      renderEvents(curSide);
-    });
-  });
 
   /* ---------- Ảnh (tự hiện placeholder nếu chưa có) ---------- */
   function loadPhoto(el, src) {

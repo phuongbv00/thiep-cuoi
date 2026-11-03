@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css?v=3" />
+  <link rel="stylesheet" href="assets/css/style.css?v=4" />
 </head>
 <body class="locked">
 
@@ -21,7 +21,7 @@
   <div id="envelope" class="envelope" aria-hidden="false">
     <div class="envelope__inner">
       <div class="hy">囍</div>
-      <p class="envelope__label" data-i18n="envLabel">Thiệp mời cưới</p>
+      <p class="envelope__label">Thiệp mời cưới</p>
       <h1 class="script envelope__names">
         <span data-bind="firstName"></span>
         <span class="amp">&amp;</span>
@@ -29,20 +29,14 @@
       </h1>
       <p class="envelope__date">29 · 11 · 2026</p>
       <div class="envelope__guest" id="envelopeGuest" hidden>
-        <span data-i18n="dear">Thân mời</span>
+        <span>Thân mời</span>
         <strong data-bind="guest"></strong>
       </div>
       <button class="btn btn--primary" id="openBtn" type="button">
         <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5Z"/></svg>
-        <span data-i18n="open">Mở thiệp</span>
+        Mở thiệp
       </button>
     </div>
-  </div>
-
-  <!-- Chuyển ngôn ngữ -->
-  <div class="lang-switch" role="group" aria-label="Language">
-    <button type="button" data-lang="vi">VI</button>
-    <button type="button" data-lang="en">EN</button>
   </div>
 
   <!-- Nút nhạc -->
@@ -65,7 +59,7 @@
           <span class="amp">&amp;</span>
           <span data-bind="secondName"></span>
         </h2>
-        <p class="hero__date" data-i18n="heroDate">Chủ Nhật · 29.11.2026</p>
+        <p class="hero__date">Chủ Nhật · 29.11.2026</p>
       </div>
     </section>
 
@@ -74,31 +68,31 @@
       <div class="ornament"></div>
       <div class="families__grid" id="families"></div>
       <div class="hy hy--small">囍</div>
-      <p class="caps muted announce" data-i18n-html="announce">Trân trọng báo tin<br />lễ thành hôn của con chúng tôi</p>
+      <p class="caps muted announce">Trân trọng báo tin<br />lễ thành hôn của con chúng tôi</p>
       <div class="couple-names" id="coupleNames"></div>
     </section>
 
     <!-- ========== CÔ DÂU & CHÚ RỂ ========== -->
     <section class="section couple reveal">
-      <h3 class="section__title script" data-i18n="duoTitle">Mãi bên nhau</h3>
+      <h3 class="section__title script">Mãi bên nhau</h3>
       <figure class="duo">
         <div class="duo__frame">
           <div class="photo photo--arch" data-photo="portrait" data-label="Ảnh đôi (dọc)"></div>
         </div>
       </figure>
-      <p class="duo__quote" data-i18n-html="quote">“Tình yêu không phải là nhìn nhau,<br />mà là cùng nhau nhìn về một hướng.”</p>
+      <p class="duo__quote">“Tình yêu không phải là nhìn nhau,<br />mà là cùng nhau nhìn về một hướng.”</p>
     </section>
 
     <!-- ========== LỜI MỜI & SỰ KIỆN ========== -->
     <section class="section invite reveal" id="events">
       <div class="photo photo--wide" data-photo="couple" data-label="Ảnh đôi (ngang)"></div>
-      <p class="caps muted invite__lead" data-i18n="inviteLead">Trân trọng kính mời</p>
+      <p class="caps muted invite__lead">Trân trọng kính mời</p>
       <p class="script invite__guest" data-bind="guestOrDefault"></p>
       <p class="invite__text" id="inviteText"></p>
 
       <div class="tabs" id="sideTabs" role="tablist" hidden>
-        <button type="button" role="tab" data-side="groom" data-i18n="tabGroom">Nhà trai · Hà Nội</button>
-        <button type="button" role="tab" data-side="bride" data-i18n="tabBride">Nhà gái · Thái Nguyên</button>
+        <button type="button" role="tab" data-side="groom">Nhà trai · Hà Nội</button>
+        <button type="button" role="tab" data-side="bride">Nhà gái · Thái Nguyên</button>
       </div>
 
       <div id="eventList" class="events"></div>
@@ -107,20 +101,20 @@
     <!-- ========== LỊCH & ĐẾM NGƯỢC ========== -->
     <section class="section calendar reveal">
       <div class="photo photo--bg" data-photo="calendarBg" data-label=""></div>
-      <h3 class="section__title script" data-i18n="calTitle">Tháng 11 · 2026</h3>
+      <h3 class="section__title script">Tháng 11 · 2026</h3>
       <div class="cal" id="calendar"></div>
       <div class="countdown" id="countdown">
-        <div><b data-cd="d">0</b><span data-i18n="cdDays">Ngày</span></div>
-        <div><b data-cd="h">0</b><span data-i18n="cdHours">Giờ</span></div>
-        <div><b data-cd="m">0</b><span data-i18n="cdMinutes">Phút</span></div>
-        <div><b data-cd="s">0</b><span data-i18n="cdSeconds">Giây</span></div>
+        <div><b data-cd="d">0</b><span>Ngày</span></div>
+        <div><b data-cd="h">0</b><span>Giờ</span></div>
+        <div><b data-cd="m">0</b><span>Phút</span></div>
+        <div><b data-cd="s">0</b><span>Giây</span></div>
       </div>
-      <p class="script countdown__done" id="countdownDone" data-i18n="today" hidden>Hôm nay là ngày vui!</p>
+      <p class="script countdown__done" id="countdownDone" hidden>Hôm nay là ngày vui!</p>
     </section>
 
     <!-- ========== ALBUM ========== -->
     <section class="section album reveal">
-      <h3 class="section__title script" data-i18n="albumTitle">Album ảnh cưới</h3>
+      <h3 class="section__title script">Album ảnh cưới</h3>
       <div class="gallery" id="gallery"></div>
     </section>
 
@@ -129,7 +123,7 @@
       <div class="photo photo--footer" data-photo="footer" data-label="Ảnh kết thiệp"></div>
       <div class="footer__overlay">
         <p class="script footer__thanks">Thank you!</p>
-        <p data-i18n="welcome">Rất hân hạnh được đón tiếp</p>
+        <p>Rất hân hạnh được đón tiếp</p>
         <p class="footer__names"><span data-bind="firstName"></span> &amp; <span data-bind="secondName"></span></p>
       </div>
     </section>
@@ -144,8 +138,7 @@
   </div>
 
   <!-- Đổi số v=... mỗi khi sửa CSS/JS để trình duyệt tải bản mới -->
-  <script src="assets/js/config.js?v=3"></script>
-  <script src="assets/js/i18n.js?v=3"></script>
-  <script src="assets/js/main.js?v=3"></script>
+  <script src="assets/js/config.js?v=4"></script>
+  <script src="assets/js/main.js?v=4"></script>
 </body>
 </html>

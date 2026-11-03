@@ -353,18 +353,4 @@ button { font: inherit; cursor: pointer; }
 /* Ưu tiên giữ phần mặt khi ảnh bị cắt */
 .photo--hero img, .photo--arch img, .photo--footer img { object-position: center 25%; }
 
-/* ---------- Chuyển ngôn ngữ ---------- */
-.lang-switch {
-  position: fixed; z-index: 55; top: 14px; right: 14px;
-  display: flex; padding: 3px;
-  background: rgba(255, 250, 241, 0.92);
-  border: 1px solid var(--line); border-radius: 999px;
-  box-shadow: 0 3px 12px rgba(74, 59, 48, 0.12);
-}
-.lang-switch button {
-  border: 0; background: transparent; color: var(--muted);
-  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
-  padding: 5px 10px; border-radius: 999px;
-}
-.lang-switch button.active { background: var(--red); color: #fff; }
 .countdown[hidden], .countdown__done[hidden] { display: none; }
