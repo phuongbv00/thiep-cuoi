@@ -1,0 +1,360 @@
+:root {
+  --cream: #f8f1e4;
+  --cream-2: #f2e7d3;
+  --paper: #fffaf1;
+  --ink: #4a3b30;
+  --muted: #8a7766;
+  --gold: #b48a4e;
+  --gold-soft: #d9c29a;
+  --red: #9c2f3a;
+  --line: rgba(180, 138, 78, 0.35);
+  --script: "Dancing Script", cursive;
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "Be Vietnam Pro", system-ui, sans-serif;
+  --maxw: 520px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-weight: 300;
+  color: var(--ink);
+  background: var(--cream-2);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body.locked { overflow: hidden; }
+p { margin: 0; }
+img { display: block; max-width: 100%; }
+button { font: inherit; cursor: pointer; }
+
+.script { font-family: var(--script); font-weight: 700; }
+.caps { text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.78rem; }
+.muted { color: var(--muted); }
+.center { text-align: center; }
+.amp { color: var(--gold); font-size: 0.7em; padding: 0 0.15em; }
+
+/* ---------- Khung thiệp (cột kiểu điện thoại) ---------- */
+.card {
+  position: relative;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  background: var(--cream);
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.6), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(217, 194, 154, 0.18), transparent 45%);
+  box-shadow: 0 0 40px rgba(74, 59, 48, 0.12);
+  overflow: hidden;
+}
+
+.section { position: relative; padding: 56px 24px; text-align: center; }
+.section + .section::before {
+  content: "";
+  position: absolute; top: 0; left: 50%;
+  width: 120px; height: 1px; transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.section__title { font-size: 2.3rem; color: var(--red); margin: 0 0 20px; line-height: 1.2; }
+
+.hy {
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  color: var(--red);
+  font-size: 3.4rem; line-height: 1;
+  margin-bottom: 12px;
+}
+.hy--small { font-size: 2rem; margin: 26px 0 10px; }
+
+.ornament {
+  width: 160px; height: 22px; margin: 0 auto 28px;
+  background:
+    radial-gradient(circle, var(--gold) 2.5px, transparent 3px) center / 22px 22px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) left center / 64px 1px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) right center / 64px 1px no-repeat;
+}
+
+/* ---------- Nút ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  padding: 11px 22px;
+  font-size: 0.9rem; font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s, color 0.2s;
+}
+.btn:active { transform: scale(0.97); }
+.btn--primary { background: var(--red); border-color: var(--red); color: #fff; }
+.btn--primary:hover { background: #84242f; }
+.btn--ghost { background: transparent; color: var(--gold); }
+.btn--ghost:hover { background: var(--gold); color: #fff; }
+.btn--block { width: 100%; }
+.btn--sm { padding: 7px 14px; font-size: 0.8rem; }
+
+/* ---------- Ảnh & placeholder ---------- */
+.photo {
+  position: relative;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(45deg, rgba(180, 138, 78, 0.07) 0 10px, transparent 10px 20px),
+    var(--cream-2);
+  border: 0;
+  padding: 0;
+}
+.photo::after {
+  content: "♡  " attr(data-label);
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-size: 0.85rem; letter-spacing: 0.05em;
+}
+.photo img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: 0; transition: opacity 0.6s;
+}
+.photo.loaded::after { display: none; }
+.photo.loaded img { opacity: 1; }
+
+/* ---------- Phong bì ---------- */
+.envelope {
+  position: fixed; inset: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 50% 35%, var(--paper), var(--cream) 60%, var(--cream-2));
+  transition: transform 1s cubic-bezier(0.7, 0, 0.3, 1), opacity 1s;
+}
+.envelope.opened { transform: translateY(-100%); opacity: 0.6; }
+.envelope__inner {
+  width: 100%; max-width: 380px;
+  text-align: center;
+  padding: 48px 28px 40px;
+  border: 1px solid var(--line);
+  outline: 1px solid var(--line); outline-offset: 6px;
+  background: rgba(255, 250, 241, 0.7);
+}
+.envelope__label { text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.72rem; color: var(--muted); }
+.envelope__names { font-size: 2.9rem; color: var(--ink); margin: 14px 0 6px; line-height: 1.15; }
+.envelope__names span { display: block; }
+.envelope__names .amp { display: block; font-size: 1.8rem; }
+.envelope__date { font-family: var(--serif); letter-spacing: 0.25em; color: var(--gold); margin-bottom: 26px; }
+.envelope__guest {
+  margin: -6px 0 26px; padding: 12px 10px;
+  border-top: 1px dashed var(--line); border-bottom: 1px dashed var(--line);
+}
+.envelope__guest span { display: block; font-size: 0.8rem; color: var(--muted); }
+.envelope__guest strong { font-family: var(--serif); font-weight: 600; font-size: 1.25rem; color: var(--red); }
+
+/* ---------- Bìa ---------- */
+.hero { position: relative; height: 100vh; height: 100svh; min-height: 560px; max-height: 920px; }
+.photo--hero { position: absolute; inset: 0; }
+.photo--hero::after { align-items: flex-start; padding-top: 30%; }
+.hero__overlay {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 120px 20px 48px;
+  text-align: center;
+  background: linear-gradient(to top, var(--cream) 18%, rgba(248, 241, 228, 0.85) 45%, transparent);
+}
+.hero__kicker { font-family: var(--serif); font-style: italic; letter-spacing: 0.25em; text-transform: uppercase; font-size: 0.8rem; color: var(--gold); }
+.hero__names { font-size: 3.2rem; line-height: 1.1; margin: 8px 0; color: var(--ink); }
+.hero__date { font-family: var(--serif); letter-spacing: 0.2em; color: var(--red); }
+
+/* ---------- Gia đình ---------- */
+.families__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.family__label { font-family: var(--serif); font-size: 1.1rem; color: var(--red); margin-bottom: 8px; }
+.family__parent { font-weight: 500; font-size: 0.86rem; letter-spacing: 0.02em; }
+.family__addr { font-size: 0.75rem; color: var(--muted); margin-top: 6px; }
+
+.couple-names { margin-top: 18px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.couple-names__item { display: flex; flex-direction: column; }
+.couple-names__role { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; }
+.couple-names__name { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; color: var(--ink); letter-spacing: 0.04em; }
+.couple-names__heart { font-family: var(--script); font-size: 2rem; color: var(--gold); line-height: 1; }
+
+/* ---------- Cô dâu chú rể ---------- */
+.couple__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.person { margin: 0; }
+.photo--portrait {
+  aspect-ratio: 3 / 4;
+  border-radius: 999px 999px 12px 12px;
+  border: 4px solid var(--paper);
+  box-shadow: 0 6px 18px rgba(74, 59, 48, 0.12);
+}
+.person figcaption { display: flex; flex-direction: column; margin-top: 12px; }
+.person__role { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--muted); }
+.person__name { font-size: 1.6rem; color: var(--red); line-height: 1.3; }
+.person__bio { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+
+/* ---------- Lời mời & sự kiện ---------- */
+.photo--wide { aspect-ratio: 4 / 3; border-radius: 12px; margin-bottom: 28px; box-shadow: 0 6px 18px rgba(74, 59, 48, 0.12); }
+.invite__guest { font-size: 2.2rem; color: var(--red); margin: 4px 0 6px; line-height: 1.3; }
+.invite__text { font-size: 0.95rem; max-width: 340px; margin: 0 auto 24px; }
+
+.tabs {
+  display: inline-flex; padding: 4px; margin-bottom: 20px;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 999px;
+}
+.tabs[hidden] { display: none; }
+.tabs button {
+  border: 0; background: transparent; color: var(--muted);
+  padding: 8px 14px; border-radius: 999px; font-size: 0.82rem; font-weight: 500;
+}
+.tabs button.active { background: var(--red); color: #fff; }
+
+.events { display: flex; flex-direction: column; gap: 18px; }
+.event {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 26px 18px 22px;
+  position: relative;
+}
+.event::before {
+  content: ""; position: absolute; inset: 6px;
+  border: 1px solid rgba(180, 138, 78, 0.18); border-radius: 10px; pointer-events: none;
+}
+.event__title { margin: 0 0 14px; font-family: var(--serif); font-weight: 600; font-size: 1.15rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--red); }
+.event__when { display: flex; align-items: center; justify-content: center; gap: 14px; }
+.event__time { font-family: var(--serif); font-size: 2rem; color: var(--ink); }
+.event__sep { width: 1px; height: 38px; background: var(--gold); }
+.event__date { display: flex; flex-direction: column; text-align: left; line-height: 1.25; }
+.event__date small { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; }
+.event__date b { font-family: var(--serif); font-weight: 600; font-size: 1.15rem; }
+.event__lunar { font-size: 0.8rem; font-style: italic; color: var(--muted); margin: 6px 0 14px; }
+.event__venue { font-weight: 600; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.event__hall { font-size: 0.88rem; color: var(--red); }
+.event__addr { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+.event__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 18px; }
+.event__actions .btn { padding: 8px 14px; font-size: 0.8rem; }
+
+.map { border-radius: 14px; overflow: hidden; border: 1px solid var(--line); aspect-ratio: 16 / 10; background: var(--cream-2); }
+.map iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+/* ---------- Lịch ---------- */
+.cal {
+  display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px;
+  max-width: 340px; margin: 0 auto 30px;
+  padding: 18px 14px; background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+}
+.cal__dow { font-size: 0.72rem; font-weight: 600; color: var(--gold); padding-bottom: 6px; }
+.cal__day { font-size: 0.88rem; height: 34px; display: flex; align-items: center; justify-content: center; position: relative; }
+.cal__day--mark { border: 1px solid var(--gold); border-radius: 50%; color: var(--gold); font-weight: 600; }
+.cal__day--main { color: #fff; font-weight: 600; z-index: 0; }
+.cal__day--main::before {
+  content: "♥"; position: absolute; z-index: -1;
+  font-size: 2.6rem; line-height: 1; color: var(--red);
+  animation: beat 1.4s ease-in-out infinite;
+}
+@keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+
+.countdown { display: flex; justify-content: center; gap: 10px; }
+.countdown > div {
+  width: 68px; padding: 10px 0;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 12px;
+  display: flex; flex-direction: column;
+}
+.countdown b { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; color: var(--red); line-height: 1.2; }
+.countdown span { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+.countdown__done { font-size: 1.8rem; color: var(--red); }
+
+/* ---------- Album ---------- */
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.gallery__item { aspect-ratio: 1; border-radius: 6px; }
+.gallery__item:nth-child(1), .gallery__item:nth-child(6) { grid-column: span 2; grid-row: span 2; }
+.gallery__item::after { font-size: 0.72rem; }
+.gallery__item.loaded img { transition: transform 0.5s, opacity 0.6s; }
+.gallery__item.loaded:hover img { transform: scale(1.05); }
+
+.lightbox {
+  position: fixed; inset: 0; z-index: 60;
+  background: rgba(30, 22, 16, 0.92);
+  display: flex; align-items: center; justify-content: center;
+}
+.lightbox[hidden] { display: none; }
+.lightbox img { max-width: 92vw; max-height: 86vh; object-fit: contain; border-radius: 6px; }
+.lightbox button { position: absolute; background: none; border: 0; color: #fff; font-size: 2.6rem; line-height: 1; padding: 12px; }
+.lightbox__close { top: 8px; right: 12px; }
+.lightbox__prev { left: 4px; top: 50%; transform: translateY(-50%); }
+.lightbox__next { right: 4px; top: 50%; transform: translateY(-50%); }
+
+/* ---------- RSVP ---------- */
+.form { text-align: left; margin-top: 22px; display: flex; flex-direction: column; gap: 14px; }
+.form label { display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem; font-weight: 500; }
+.form input:not([type=radio]), .form select, .form textarea {
+  font: inherit; font-weight: 400; color: var(--ink);
+  padding: 11px 14px; border-radius: 10px;
+  border: 1px solid var(--line); background: var(--paper);
+  outline: none; width: 100%;
+}
+.form input:focus, .form select:focus, .form textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(180, 138, 78, 0.15); }
+.form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.choice { border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.choice legend { font-size: 0.85rem; font-weight: 500; margin-bottom: 6px; }
+.choice label { flex-direction: row; align-items: center; gap: 10px; font-weight: 400; }
+.choice input { accent-color: var(--red); width: 18px; height: 18px; }
+.form__status { text-align: center; color: var(--red); min-height: 1.4em; font-size: 0.9rem; }
+
+/* ---------- Mừng cưới ---------- */
+.gifts__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 22px; }
+.gift { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 18px 10px; }
+.gift__label { font-family: var(--serif); color: var(--red); font-size: 0.95rem; margin-bottom: 10px; }
+.photo--qr { width: 120px; height: 120px; margin: 0 auto 10px; border-radius: 8px; background-color: #fff; }
+.photo--qr img { object-fit: contain; }
+.gift__bank { font-size: 0.78rem; color: var(--muted); }
+.gift__name { font-size: 0.8rem; font-weight: 600; }
+.gift__acc { font-family: var(--serif); font-size: 1.05rem; letter-spacing: 0.05em; margin-bottom: 10px; }
+
+/* ---------- Kết ---------- */
+.footer { position: relative; height: 520px; text-align: center; }
+.photo--footer { position: absolute; inset: 0; }
+.photo--footer::after { align-items: flex-start; padding-top: 25%; }
+.footer__overlay {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 120px 20px 44px;
+  background: linear-gradient(to top, var(--cream) 30%, rgba(248, 241, 228, 0.8) 60%, transparent);
+}
+.footer__thanks { font-size: 3rem; color: var(--red); line-height: 1.2; }
+.footer__names { font-family: var(--serif); font-size: 1.1rem; letter-spacing: 0.1em; margin-top: 4px; color: var(--gold); }
+
+/* ---------- Nhạc ---------- */
+.music-btn {
+  position: fixed; z-index: 40; right: 16px; bottom: 16px;
+  width: 46px; height: 46px; border-radius: 50%;
+  border: 1px solid var(--gold); background: var(--paper); color: var(--red);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 14px rgba(74, 59, 48, 0.18);
+}
+.music-btn[hidden] { display: none; }
+.music-btn.playing svg { animation: spin 4s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- Hiệu ứng ---------- */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+.petals { position: fixed; inset: 0; pointer-events: none; z-index: 30; overflow: hidden; }
+.petals span {
+  position: absolute; top: -20px;
+  width: 12px; height: 10px;
+  background: radial-gradient(circle at 30% 30%, #f6c9cf, #e59aa5);
+  border-radius: 12px 0 12px 0;
+  opacity: 0.7;
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  0% { transform: translate(0, -20px) rotate(0) scale(var(--s, 1)); }
+  50% { transform: translate(40px, 50vh) rotate(180deg) scale(var(--s, 1)); }
+  100% { transform: translate(-20px, 105vh) rotate(360deg) scale(var(--s, 1)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .cal__day--main::before, .music-btn.playing svg { animation: none; }
+  .envelope { transition: opacity 0.3s; }
+}
+
+@media (max-width: 360px) {
+  .section { padding: 48px 16px; }
+  .families__grid, .couple__grid, .gifts__grid { gap: 10px; }
+  .hero__names { font-size: 2.7rem; }
+}
