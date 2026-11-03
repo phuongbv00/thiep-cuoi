@@ -12,6 +12,11 @@ Chép ảnh vào thư mục này với đúng tên dưới đây (.jpg). Ảnh n
 | `detail.jpg` | Nền mờ phía sau lịch | 09 Phông nền – Chi tiết | Ngang | Hiển thị rất mờ, chọn ảnh ít chi tiết, không có mặt người |
 | `footer.jpg` | Kết thiệp "Thank you" | 05 Cận cảnh – Ôm, hôn | Dọc | Nửa dưới bị phủ chữ |
 
+## Ảnh xem trước khi chia sẻ link
+
+`og-image.jpg` (1200×630) là ảnh hiện ra khi gửi link qua Zalo, Messenger, Facebook. Ảnh hiện tại là bản thiết kế chữ; muốn dùng ảnh cưới thì thay file này bằng ảnh ngang đúng 1200×630.
+`apple-touch-icon.png` là biểu tượng khi khách lưu thiệp ra màn hình chính điện thoại.
+
 ## Album (12 ảnh)
 
 Bố cục lặp lại mỗi 6 ảnh: 1 ô lớn + 5 ô vuông nhỏ. Ảnh bị cắt vuông, ưu tiên giữ phần phía trên (mặt).
