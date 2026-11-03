@@ -74,6 +74,13 @@ button { font: inherit; cursor: pointer; }
     linear-gradient(var(--gold), var(--gold)) right center / 64px 1px no-repeat;
 }
 
+/* ---------- Icon ---------- */
+.icon {
+  width: 16px; height: 16px; flex: none;
+  fill: none; stroke: currentColor; stroke-width: 1.6;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+
 /* ---------- Nút ---------- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -103,10 +110,10 @@ button { font: inherit; cursor: pointer; }
   padding: 0;
 }
 .photo::after {
-  content: "♡  " attr(data-label);
+  content: attr(data-label);
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
-  color: var(--gold); font-size: 0.85rem; letter-spacing: 0.05em;
+  color: var(--gold); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
 }
 .photo img {
   position: absolute; inset: 0; width: 100%; height: 100%;
@@ -254,13 +261,8 @@ button { font: inherit; cursor: pointer; }
 .cal__dow { font-size: 0.72rem; font-weight: 600; color: var(--gold); padding-bottom: 6px; }
 .cal__day { font-size: 0.88rem; height: 34px; display: flex; align-items: center; justify-content: center; position: relative; }
 .cal__day--mark { border: 1px solid var(--gold); border-radius: 50%; color: var(--gold); font-weight: 600; }
-.cal__day--main { color: #fff; font-weight: 600; z-index: 0; }
-.cal__day--main::before {
-  content: "♥"; position: absolute; z-index: -1;
-  font-size: 2.6rem; line-height: 1; color: var(--red);
-  animation: beat 1.4s ease-in-out infinite;
-}
-@keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+.cal__day--main { background: var(--red); border-radius: 50%; color: #fff; font-weight: 600; }
+.cal__day--mark, .cal__day--main { width: 34px; margin: 0 auto; }
 
 .countdown { display: flex; justify-content: center; gap: 10px; }
 .countdown > div {
@@ -290,7 +292,8 @@ button { font: inherit; cursor: pointer; }
 }
 .lightbox[hidden] { display: none; }
 .lightbox img { max-width: 92vw; max-height: 86vh; object-fit: contain; border-radius: 6px; }
-.lightbox button { position: absolute; background: none; border: 0; color: #fff; font-size: 2.6rem; line-height: 1; padding: 12px; }
+.lightbox button { position: absolute; background: none; border: 0; color: #fff; line-height: 0; padding: 12px; }
+.lightbox button .icon { width: 28px; height: 28px; stroke-width: 1.4; }
 .lightbox__close { top: 8px; right: 12px; }
 .lightbox__prev { left: 4px; top: 50%; transform: translateY(-50%); }
 .lightbox__next { right: 4px; top: 50%; transform: translateY(-50%); }
@@ -316,8 +319,9 @@ button { font: inherit; cursor: pointer; }
   box-shadow: 0 4px 14px rgba(74, 59, 48, 0.18);
 }
 .music-btn[hidden] { display: none; }
-.music-btn.playing svg { animation: spin 4s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
+.music-btn .icon { width: 20px; height: 20px; }
+.music-btn .icon--on, .music-btn.playing .icon--off { display: none; }
+.music-btn.playing .icon--on { display: block; }
 
 /* ---------- Hiệu ứng ---------- */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.9s ease, transform 0.9s ease; }
@@ -327,9 +331,9 @@ button { font: inherit; cursor: pointer; }
 .petals span {
   position: absolute; top: -20px;
   width: 12px; height: 10px;
-  background: radial-gradient(circle at 30% 30%, #f6c9cf, #e59aa5);
+  background: var(--gold-soft);
   border-radius: 12px 0 12px 0;
-  opacity: 0.7;
+  opacity: 0.55;
   animation: fall linear infinite;
 }
 @keyframes fall {
@@ -340,7 +344,6 @@ button { font: inherit; cursor: pointer; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .cal__day--main::before, .music-btn.playing svg { animation: none; }
   .envelope { transition: opacity 0.3s; }
 }
 

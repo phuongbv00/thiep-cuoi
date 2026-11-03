@@ -38,6 +38,13 @@
   };
   function t(key) { return STR[key]; }
 
+  // Icon nét mảnh (Lucide, ISC), màu theo chữ (currentColor)
+  var ICON = {
+    pin: '<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>',
+    calendar: '<path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 13V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/><path d="M3 10h18"/><path d="M16 19h6"/><path d="M19 16v6"/>',
+  };
+  function icon(name) { return '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">' + ICON[name] + "</svg>"; }
+
   // Thiệp nhà gái: tên cô dâu và gia đình nhà gái đứng trước
   var first = side === "bride" ? W.bride : W.groom;
   var second = side === "bride" ? W.groom : W.bride;
@@ -123,8 +130,8 @@
       (ev.hall ? '<p class="event__hall">' + esc(ev.hall) + "</p>" : "") +
       '<p class="event__addr">' + esc(ev.address) + "</p>" +
       '<div class="event__actions">' +
-      '<a class="btn btn--ghost" target="_blank" rel="noopener" href="' + mapLink(ev) + '">📍 ' + t("directions") + "</a>" +
-      '<a class="btn btn--ghost" target="_blank" rel="noopener" href="' + gcalLink(ev) + '">🗓 ' + t("addCalendar") + "</a>" +
+      '<a class="btn btn--ghost" target="_blank" rel="noopener" href="' + mapLink(ev) + '">' + icon("pin") + t("directions") + "</a>" +
+      '<a class="btn btn--ghost" target="_blank" rel="noopener" href="' + gcalLink(ev) + '">' + icon("calendar") + t("addCalendar") + "</a>" +
       "</div></article>"
     );
   }
