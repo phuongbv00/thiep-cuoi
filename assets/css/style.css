@@ -162,9 +162,10 @@ button { font: inherit; cursor: pointer; }
 /* ---------- Gia đình ---------- */
 .families__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .family__label { font-family: var(--serif); font-size: 1.1rem; color: var(--red); margin-bottom: 8px; }
-.family__parent { font-weight: 500; font-size: 0.86rem; letter-spacing: 0.02em; }
+.family__parent { font-weight: 500; font-size: clamp(0.72rem, 3.3vw, 0.86rem); letter-spacing: 0.01em; white-space: nowrap; }
 .family__addr { font-size: 0.75rem; color: var(--muted); margin-top: 6px; }
 
+.announce { line-height: 1.9; }
 .couple-names { margin-top: 18px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
 .couple-names__item { display: flex; flex-direction: column; }
 .couple-names__role { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; }
@@ -191,12 +192,7 @@ button { font: inherit; cursor: pointer; }
   border-radius: 999px 999px 10px 10px;
   box-shadow: 0 8px 22px rgba(74, 59, 48, 0.14);
 }
-.duo__names { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 22px; }
-.duo__person { display: flex; flex-direction: column; min-width: 0; }
-.duo__person small { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--muted); }
-.duo__person .script { font-size: 1.9rem; color: var(--red); line-height: 1.25; white-space: nowrap; }
-.duo__amp { font-family: var(--script); font-size: 2.2rem; color: var(--gold); padding-top: 14px; }
-.duo__quote { font-family: var(--serif); font-style: italic; font-size: 0.92rem; color: var(--muted); margin-top: 18px; }
+.duo__quote { font-family: var(--serif); font-style: italic; font-size: 0.95rem; color: var(--muted); margin-top: 26px; }
 
 /* ---------- Lời mời & sự kiện ---------- */
 .photo--wide { aspect-ratio: 4 / 3; border-radius: 12px; margin-bottom: 28px; box-shadow: 0 6px 18px rgba(74, 59, 48, 0.12); }
@@ -351,8 +347,6 @@ button { font: inherit; cursor: pointer; }
 @media (max-width: 360px) {
   .section { padding: 48px 16px; }
   .families__grid { gap: 10px; }
-  .duo__person .script { font-size: 1.6rem; }
-  .duo__names { gap: 10px; }
   .hero__names { font-size: 2.7rem; }
 }
 

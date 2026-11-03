@@ -87,7 +87,7 @@ window.WEDDING = {
    */
   photos: {
     cover: "images/cover.jpg",           // 01 Toàn thân - Đứng (dọc)
-    portrait: "images/portrait.jpg",     // 03 Bán thân - Chính diện (dọc), khung vòm
+    portrait: "images/portrait.jpg",     // 03 Bán thân - Chính diện (dọc), khung vòm "Mãi bên nhau"
     couple: "images/couple.jpg",         // 02 Toàn thân - Tương tác (ngang), trên lời mời
     calendarBg: "images/detail.jpg",     // 09 Phông nền - Chi tiết, nền mờ sau lịch
     footer: "images/footer.jpg",         // 05 Cận cảnh - Ôm, hôn (dọc), kết thiệp

@@ -62,12 +62,6 @@
     '<div class="couple-names__heart">&amp;</div>' +
     (side === "gai" ? groomHtml : brideHtml);
 
-  function duoName(role, p) {
-    return '<span class="duo__person"><small>' + role + '</small><span class="script">' + esc(p.shortName) + "</span></span>";
-  }
-  var duoGroom = duoName("Chú rể", W.groom), duoBride = duoName("Cô dâu", W.bride);
-  $("#duoNames").innerHTML =
-    (side === "gai" ? duoBride : duoGroom) + '<span class="duo__amp">&amp;</span>' + (side === "gai" ? duoGroom : duoBride);
 
   /* ---------- Sự kiện ---------- */
   function pad(n) { return (n < 10 ? "0" : "") + n; }
