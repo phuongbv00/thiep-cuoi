@@ -3,11 +3,15 @@
  *  CẤU HÌNH THIỆP CƯỚI — chỉnh nội dung ở file này là đủ
  * ============================================================
  *
- *  Link gửi khách:
- *    Thiệp nhà trai : index.html?ben=trai&to=Anh%20Nam
- *    Thiệp nhà gái  : index.html?ben=gai&to=Cô%20Lan
- *    Không có ?ben  : hiển thị cả hai bên (có tab chuyển)
- *  Tham số "to" là tên khách mời (không bắt buộc).
+ *  Link gửi khách (tham số URL):
+ *    side=groom   thiệp nhà trai      side=bride   thiệp nhà gái
+ *                 (không có side: hiển thị cả hai bên, có tab chuyển)
+ *    guest=...    tên khách mời (không bắt buộc)
+ *    lang=en      tiếng Anh (mặc định tiếng Việt; khách có thể bấm VI/EN)
+ *  Ví dụ:
+ *    index.html?side=groom&guest=Anh%20Nam
+ *    index.html?side=bride&guest=C%C3%B4%20Lan
+ *    index.html?side=groom&guest=John&lang=en
  */
 window.WEDDING = {
   groom: {
@@ -29,8 +33,12 @@ window.WEDDING = {
   // Mốc đếm ngược (giờ Việt Nam)
   countdownTo: "2026-11-29T11:00:00+07:00",
 
+  /*
+   * Sự kiện của từng bên. Mục "en" là bản tiếng Anh (thiếu mục nào sẽ dùng
+   * bản tiếng Việt). Địa chỉ giữ nguyên tiếng Việt để khách dễ tìm đường.
+   */
   events: {
-    trai: [
+    groom: [
       {
         title: "Lễ Thành Hôn",
         start: "2026-11-29T11:00:00+07:00",
@@ -41,6 +49,12 @@ window.WEDDING = {
         hall: "Sảnh Queen 2 - Tầng 1",
         address: "173B Đ. Trường Chinh, Phương Liệt, Hà Nội",
         map: "Trống Đồng Palace Cảnh Hồ, 173B Trường Chinh, Hà Nội",
+        en: {
+          title: "Wedding Ceremony",
+          weekday: "Sunday",
+          lunar: "21st day of the 10th lunar month, Year of the Horse",
+          hall: "Queen 2 Hall - 1st Floor",
+        },
       },
       {
         title: "Tiệc Cưới",
@@ -52,9 +66,15 @@ window.WEDDING = {
         hall: "Sảnh Queen 2 - Tầng 1",
         address: "173B Trường Chinh, Phương Liệt, Hà Nội",
         map: "Trống Đồng Palace Cảnh Hồ, 173B Trường Chinh, Hà Nội",
+        en: {
+          title: "Wedding Reception",
+          weekday: "Sunday",
+          lunar: "21st day of the 10th lunar month, Year of the Horse",
+          hall: "Queen 2 Hall - 1st Floor",
+        },
       },
     ],
-    gai: [
+    bride: [
       {
         title: "Tiệc Cưới",
         start: "2026-11-28T16:00:00+07:00",
@@ -65,6 +85,12 @@ window.WEDDING = {
         hall: "",
         address: "Số nhà 845, Tổ 12 Phố Cò, Đ. Cách Mạng Tháng Tám, Sông Công, Thái Nguyên",
         map: "Số 845 Đường Cách Mạng Tháng Tám, Sông Công, Thái Nguyên",
+        en: {
+          title: "Wedding Reception",
+          weekday: "Saturday",
+          lunar: "20th day of the 10th lunar month, Year of the Horse",
+          venue: "The Bride's Family Home",
+        },
       },
       {
         title: "Lễ Vu Quy",
@@ -76,6 +102,12 @@ window.WEDDING = {
         hall: "",
         address: "Số nhà 845, Tổ 12 Phố Cò, Đ. Cách Mạng Tháng Tám, Sông Công, Thái Nguyên",
         map: "Số 845 Đường Cách Mạng Tháng Tám, Sông Công, Thái Nguyên",
+        en: {
+          title: "Bride's Farewell Ceremony",
+          weekday: "Sunday",
+          lunar: "21st day of the 10th lunar month, Year of the Horse",
+          venue: "The Bride's Family Home",
+        },
       },
     ],
   },

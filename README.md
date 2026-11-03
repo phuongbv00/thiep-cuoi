@@ -11,16 +11,22 @@ Website thiệp cưới tĩnh (HTML/CSS/JS thuần, không cần build), nền m
 - Nhạc nền ("Lễ Đường" – Kai Đinh), hiệu ứng cánh hoa rơi
 
 ## Link gửi khách
-| Link | Hiển thị |
-|---|---|
-| `index.html?ben=trai&to=Anh%20Nam` | Thiệp nhà trai (Lễ Thành Hôn + Tiệc tại Trống Đồng Palace) |
-| `index.html?ben=gai&to=Cô%20Lan` | Thiệp nhà gái (Tiệc 28/11 + Lễ Vu Quy 29/11 tại Thái Nguyên) |
-| `index.html` | Cả hai bên, có tab chuyển |
+| Tham số | Giá trị | Ý nghĩa |
+|---|---|---|
+| `side` | `groom` / `bride` | Thiệp nhà trai / nhà gái. Bỏ trống: hiện cả hai bên, có tab chuyển |
+| `guest` | tên khách | Hiện "Thân mời …" / "Dear …" (không bắt buộc) |
+| `lang` | `vi` / `en` | Ngôn ngữ mặc định khi mở (khách vẫn bấm VI/EN để đổi) |
 
-`to` là tên khách (dấu cách viết `%20`, có thể bỏ trống).
+Ví dụ:
+- Nhà trai: `?side=groom&guest=Anh%20Nam`
+- Nhà gái: `?side=bride&guest=C%C3%B4%20Lan`
+- Khách nước ngoài: `?side=groom&guest=John&lang=en`
+
+Dấu cách trong tên viết `%20`. Link cũ dạng `?ben=trai&to=...` vẫn chạy.
 
 ## Chỉnh nội dung
-Mọi nội dung nằm trong `assets/js/config.js`. Ảnh: xem `images/README.md`. Nhạc: đặt file `music/song.mp3`.
+Thông tin cưới nằm trong `assets/js/config.js`, chữ cố định song ngữ trong `assets/js/i18n.js`.
+Sau khi sửa CSS/JS, tăng số `?v=` trong `index.html` để trình duyệt của khách tải bản mới. Ảnh: xem `images/README.md`. Nhạc: đặt file `music/song.mp3`.
 
 ## Chạy thử
 ```bash

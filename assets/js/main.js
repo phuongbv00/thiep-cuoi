@@ -2,66 +2,89 @@
   "use strict";
 
   var W = window.WEDDING;
+  var I18N = window.I18N || {};
   var params = new URLSearchParams(location.search);
-  var sideParam = (params.get("ben") || params.get("side") || "").toLowerCase();
-  var side = sideParam === "gai" || sideParam === "trai" ? sideParam : null;
-  var guest = (params.get("to") || params.get("khach") || "").trim();
+
+  // Tham số URL: side=groom|bride, guest=..., lang=vi|en (vẫn nhận ben/to cũ)
+  var SIDES = { groom: "groom", bride: "bride", trai: "groom", gai: "bride" };
+  var side = SIDES[(params.get("side") || params.get("ben") || "").toLowerCase()] || null;
+  var guest = (params.get("guest") || params.get("to") || "").trim();
+  var lang = (params.get("lang") || "").toLowerCase() === "en" ? "en" : "vi";
+  var curSide = side || "groom";
 
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
   var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
+  var setHTML = function (sel, html) { var el = $(sel); if (el) el.innerHTML = html; };
+  var setText = function (sel, txt) { var el = $(sel); if (el) el.textContent = txt; };
   var esc = function (s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
   };
   var upper = function (s) { return String(s).toLocaleUpperCase("vi-VN"); };
-
-  // Bên gái: tên cô dâu đứng trước, gia đình nhà gái đứng trước
-  var first = side === "gai" ? W.bride : W.groom;
-  var second = side === "gai" ? W.groom : W.bride;
-
-  /* ---------- Bind text ---------- */
-  var binds = {
-    firstName: first.shortName,
-    secondName: second.shortName,
-    guest: guest,
-    guestOrDefault: guest || "Quý khách",
-  };
-  $$("[data-bind]").forEach(function (el) {
-    var v = binds[el.getAttribute("data-bind")];
-    if (v) el.textContent = v;
-  });
-  if (guest) {
-    $("#envelopeGuest").hidden = false;
-    document.title = "Thân mời " + guest + " · " + document.title;
+  function t(key) {
+    var d = I18N[lang] || {};
+    return key in d ? d[key] : (I18N.vi || {})[key] || "";
   }
+  function localized(ev) { return lang === "en" && ev.en ? Object.assign({}, ev, ev.en) : ev; }
 
-  /* ---------- Gia đình ---------- */
+  // Thiệp nhà gái: tên cô dâu và gia đình nhà gái đứng trước
+  var first = side === "bride" ? W.bride : W.groom;
+  var second = side === "bride" ? W.groom : W.bride;
+
+  /* ---------- Chữ cố định + gia đình (vẽ lại khi đổi ngôn ngữ) ---------- */
   function familyCol(label, p) {
     return (
       '<div class="family">' +
-      '<p class="family__label">' + label + "</p>" +
-      '<p class="family__parent">Ông ' + esc(upper(p.father)) + "</p>" +
-      '<p class="family__parent">Bà ' + esc(upper(p.mother)) + "</p>" +
+      '<p class="family__label">' + esc(label) + "</p>" +
+      '<p class="family__parent">' + t("mr") + " " + esc(upper(p.father)) + "</p>" +
+      '<p class="family__parent">' + t("mrs") + " " + esc(upper(p.mother)) + "</p>" +
       (p.address ? '<p class="family__addr">' + esc(p.address) + "</p>" : "") +
       "</div>"
     );
   }
-  var famTrai = familyCol("Nhà trai", W.groom);
-  var famGai = familyCol("Nhà gái", W.bride);
-  $("#families").innerHTML = side === "gai" ? famGai + famTrai : famTrai + famGai;
-
   function personName(role, p) {
-    return '<div class="couple-names__item"><span class="couple-names__role">' + role +
+    return '<div class="couple-names__item"><span class="couple-names__role">' + esc(role) +
       '</span><span class="couple-names__name">' + esc(upper(p.fullName)) + "</span></div>";
   }
-  var groomHtml = personName("Chú rể", W.groom);
-  var brideHtml = personName("Cô dâu", W.bride);
-  $("#coupleNames").innerHTML =
-    (side === "gai" ? brideHtml : groomHtml) +
-    '<div class="couple-names__heart">&amp;</div>' +
-    (side === "gai" ? groomHtml : brideHtml);
 
+  function renderStatic() {
+    document.documentElement.lang = lang;
+    $$("[data-i18n]").forEach(function (el) { el.textContent = t(el.getAttribute("data-i18n")); });
+    $$("[data-i18n-html]").forEach(function (el) { el.innerHTML = t(el.getAttribute("data-i18n-html")); });
+
+    var binds = {
+      firstName: first.shortName,
+      secondName: second.shortName,
+      guest: guest,
+      guestOrDefault: guest || t("guestDefault"),
+    };
+    $$("[data-bind]").forEach(function (el) {
+      var v = binds[el.getAttribute("data-bind")];
+      if (v) el.textContent = v;
+    });
+    var envGuest = $("#envelopeGuest");
+    if (envGuest) envGuest.hidden = !guest;
+    var title = first.shortName + " & " + second.shortName + " · 29.11.2026";
+    document.title = guest ? t("dear") + " " + guest + " · " + title : title;
+
+    var famGroom = familyCol(t("groomFamily"), W.groom);
+    var famBride = familyCol(t("brideFamily"), W.bride);
+    setHTML("#families", side === "bride" ? famBride + famGroom : famGroom + famBride);
+
+    var groomHtml = personName(t("groom"), W.groom);
+    var brideHtml = personName(t("bride"), W.bride);
+    setHTML("#coupleNames",
+      (side === "bride" ? brideHtml : groomHtml) +
+      '<div class="couple-names__heart">&amp;</div>' +
+      (side === "bride" ? groomHtml : brideHtml));
+
+    $$(".lang-switch [data-lang]").forEach(function (b) {
+      var on = b.getAttribute("data-lang") === lang;
+      b.classList.toggle("active", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+  }
 
   /* ---------- Sự kiện ---------- */
   function pad(n) { return (n < 10 ? "0" : "") + n; }
@@ -77,14 +100,15 @@
       dates: fmt(ev.start) + "/" + fmt(ev.end || ev.start),
       ctz: "Asia/Ho_Chi_Minh",
       location: [ev.venue, ev.hall, ev.address].filter(Boolean).join(", "),
-      details: "Trân trọng kính mời bạn tới dự " + ev.title + " của " + W.groom.fullName + " & " + W.bride.fullName + ".",
+      details: t("calInvite").replace("{event}", ev.title).replace("{couple}", W.groom.fullName + " & " + W.bride.fullName),
     });
     return "https://calendar.google.com/calendar/render?" + q.toString();
   }
   function mapLink(ev) {
     return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(ev.map || ev.address);
   }
-  function eventCard(ev) {
+  function eventCard(raw) {
+    var ev = localized(raw);
     var p = parts(ev.start);
     return (
       '<article class="event">' +
@@ -99,22 +123,18 @@
       (ev.hall ? '<p class="event__hall">' + esc(ev.hall) + "</p>" : "") +
       '<p class="event__addr">' + esc(ev.address) + "</p>" +
       '<div class="event__actions">' +
-      '<a class="btn btn--ghost" target="_blank" rel="noopener" href="' + mapLink(ev) + '">📍 Chỉ đường</a>' +
-      '<a class="btn btn--ghost" target="_blank" rel="noopener" href="' + gcalLink(ev) + '">🗓 Lưu vào lịch</a>' +
+      '<a class="btn btn--ghost" target="_blank" rel="noopener" href="' + mapLink(ev) + '">📍 ' + t("directions") + "</a>" +
+      '<a class="btn btn--ghost" target="_blank" rel="noopener" href="' + gcalLink(ev) + '">🗓 ' + t("addCalendar") + "</a>" +
       "</div></article>"
     );
   }
   function mapEmbed(query) {
-    return '<div class="map"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Bản đồ" src="https://maps.google.com/maps?q=' +
-      encodeURIComponent(query) + '&z=16&output=embed"></iframe></div>';
+    return '<div class="map"><iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="' + t("mapTitle") +
+      '" src="https://maps.google.com/maps?q=' + encodeURIComponent(query) + "&z=16&hl=" + lang + '&output=embed"></iframe></div>';
   }
 
-  var inviteText = {
-    trai: "Tới dự bữa tiệc chung vui cùng gia đình chúng tôi tại Hà Nội",
-    gai: "Tới dự bữa tiệc chung vui cùng gia đình chúng tôi tại Thái Nguyên",
-  };
-
   function renderEvents(s) {
+    curSide = s;
     var list = W.events[s] || [];
     var seen = {};
     var maps = list.filter(function (ev) {
@@ -122,8 +142,8 @@
       if (seen[k]) return false;
       return (seen[k] = true);
     }).map(function (ev) { return mapEmbed(ev.map || ev.address); }).join("");
-    $("#eventList").innerHTML = list.map(eventCard).join("") + maps;
-    $("#inviteText").textContent = inviteText[s];
+    setHTML("#eventList", list.map(eventCard).join("") + maps);
+    setText("#inviteText", t(s === "bride" ? "inviteBride" : "inviteGroom"));
     $$("#sideTabs [data-side]").forEach(function (b) {
       var on = b.getAttribute("data-side") === s;
       b.classList.toggle("active", on);
@@ -141,14 +161,14 @@
     var mainDay = +parts(W.countdownTo).d;
     var firstDow = (new Date(year, month, 1).getDay() + 6) % 7; // T2 = 0
     var days = new Date(year, month + 1, 0).getDate();
-    var html = ["T2", "T3", "T4", "T5", "T6", "T7", "CN"].map(function (d) { return '<span class="cal__dow">' + d + "</span>"; }).join("");
+    var html = t("dow").map(function (d) { return '<span class="cal__dow">' + d + "</span>"; }).join("");
     for (var i = 0; i < firstDow; i++) html += "<span></span>";
     for (var d = 1; d <= days; d++) {
       var cls = "cal__day";
       if (marks[d]) cls += d === mainDay ? " cal__day--main" : " cal__day--mark";
       html += '<span class="' + cls + '">' + d + "</span>";
     }
-    $("#calendar").innerHTML = html;
+    setHTML("#calendar", html);
   }
 
   /* ---------- Đếm ngược ---------- */
@@ -156,33 +176,47 @@
   function startCountdown(s) {
     var starts = (W.events[s] || []).map(function (e) { return new Date(e.start).getTime(); });
     var target = starts.length ? Math.min.apply(null, starts) : new Date(W.countdownTo).getTime();
+    var box = $("#countdown"), done = $("#countdownDone");
+    if (!box) return;
     clearInterval(cdTimer);
     function tick() {
       var diff = Math.max(0, target - Date.now());
-      if (diff === 0) {
-        $("#countdown").innerHTML = '<p class="script countdown__done">Hôm nay là ngày vui!</p>';
-        clearInterval(cdTimer);
-        return;
-      }
+      box.hidden = diff === 0;
+      if (done) done.hidden = diff !== 0;
+      if (diff === 0) { clearInterval(cdTimer); return; }
       var sec = Math.floor(diff / 1000);
-      $('[data-cd="d"]').textContent = Math.floor(sec / 86400);
-      $('[data-cd="h"]').textContent = pad(Math.floor((sec % 86400) / 3600));
-      $('[data-cd="m"]').textContent = pad(Math.floor((sec % 3600) / 60));
-      $('[data-cd="s"]').textContent = pad(sec % 60);
+      setText('[data-cd="d"]', Math.floor(sec / 86400));
+      setText('[data-cd="h"]', pad(Math.floor((sec % 86400) / 3600)));
+      setText('[data-cd="m"]', pad(Math.floor((sec % 3600) / 60)));
+      setText('[data-cd="s"]', pad(sec % 60));
     }
     tick();
     cdTimer = setInterval(tick, 1000);
   }
 
+  /* ---------- Khởi tạo + đổi ngôn ngữ ---------- */
+  renderStatic();
   if (side) {
     renderEvents(side);
   } else {
-    $("#sideTabs").hidden = false;
+    var tabs = $("#sideTabs");
+    if (tabs) tabs.hidden = false;
     $$("#sideTabs [data-side]").forEach(function (b) {
       b.addEventListener("click", function () { renderEvents(b.getAttribute("data-side")); });
     });
-    renderEvents("trai");
+    renderEvents("groom");
   }
+
+  $$(".lang-switch [data-lang]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      lang = b.getAttribute("data-lang");
+      var u = new URL(location.href);
+      if (lang === "vi") u.searchParams.delete("lang"); else u.searchParams.set("lang", lang);
+      history.replaceState(null, "", u);
+      renderStatic();
+      renderEvents(curSide);
+    });
+  });
 
   /* ---------- Ảnh (tự hiện placeholder nếu chưa có) ---------- */
   function loadPhoto(el, src) {
