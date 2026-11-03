@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css?v=10" />
+  <link rel="stylesheet" href="assets/css/style.css?v=11" />
 </head>
 <body class="locked">
 
@@ -79,6 +79,10 @@
           <span data-bind="secondName"></span>
         </h2>
         <p class="hero__date">Chủ Nhật · 29.11.2026</p>
+        <p class="hero__info" id="heroInfo"></p>
+        <a class="hero__scroll" href="#events" aria-label="Xem thông tin lễ cưới">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
       </div>
     </section>
 
@@ -91,20 +95,8 @@
       <div class="couple-names" id="coupleNames"></div>
     </section>
 
-    <!-- ========== CÔ DÂU & CHÚ RỂ ========== -->
-    <section class="section couple reveal">
-      <h3 class="section__title script">Mãi bên nhau</h3>
-      <figure class="duo">
-        <div class="duo__frame">
-          <div class="photo photo--arch" data-photo="portrait" data-label="Ảnh đôi (dọc)"></div>
-        </div>
-      </figure>
-      <p class="duo__quote">“Tình yêu không phải là nhìn nhau,<br />mà là cùng nhau nhìn về một hướng.”</p>
-    </section>
-
     <!-- ========== LỜI MỜI & SỰ KIỆN ========== -->
     <section class="section invite reveal" id="events">
-      <div class="photo photo--wide" data-photo="couple" data-label="Ảnh đôi (ngang)"></div>
       <p class="caps muted invite__lead">Trân trọng kính mời</p>
       <p class="script invite__guest" data-bind="guestOrDefault"></p>
       <p class="invite__text" id="inviteText"></p>
@@ -131,9 +123,21 @@
       <p class="script countdown__done" id="countdownDone" hidden>Hôm nay là ngày vui!</p>
     </section>
 
+    <!-- ========== CÔ DÂU & CHÚ RỂ ========== -->
+    <section class="section couple reveal">
+      <h3 class="section__title script">Mãi bên nhau</h3>
+      <figure class="duo">
+        <div class="duo__frame">
+          <div class="photo photo--arch" data-photo="portrait" data-label="Ảnh đôi (dọc)"></div>
+        </div>
+      </figure>
+      <p class="duo__quote">“Tình yêu không phải là nhìn nhau,<br />mà là cùng nhau nhìn về một hướng.”</p>
+    </section>
+
     <!-- ========== ALBUM ========== -->
     <section class="section album reveal">
       <h3 class="section__title script">Album ảnh cưới</h3>
+      <div class="photo photo--wide" data-photo="couple" data-label="Ảnh đôi (ngang)"></div>
       <div class="gallery" id="gallery"></div>
     </section>
 
@@ -157,7 +161,7 @@
   </div>
 
   <!-- Đổi số v=... mỗi khi sửa CSS/JS để trình duyệt tải bản mới -->
-  <script src="assets/js/config.js?v=10"></script>
-  <script src="assets/js/main.js?v=10"></script>
+  <script src="assets/js/config.js?v=11"></script>
+  <script src="assets/js/main.js?v=11"></script>
 </body>
 </html>

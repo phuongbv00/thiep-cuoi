@@ -28,6 +28,13 @@ window.WEDDING = {
     address: "",
   },
 
+  // Dòng tóm tắt dưới ngày cưới ở bìa (theo từng bên; "all" khi không có side)
+  heroInfo: {
+    groom: "11:00 · Trống Đồng Palace Cảnh Hồ · Hà Nội",
+    bride: "Tư gia nhà gái · Sông Công, Thái Nguyên",
+    all: "Hà Nội · Thái Nguyên",
+  },
+
   // Mốc đếm ngược (giờ Việt Nam)
   countdownTo: "2026-11-29T11:00:00+07:00",
 
@@ -91,7 +98,7 @@ window.WEDDING = {
   photos: {
     cover: "images/cover.jpg",           // 01 Toàn thân - Đứng (dọc)
     portrait: "images/portrait.jpg",     // 03 Bán thân - Chính diện (dọc), khung vòm "Mãi bên nhau"
-    couple: "images/couple.jpg",         // 02 Toàn thân - Tương tác (ngang), trên lời mời
+    couple: "images/couple.jpg",         // 02 Toàn thân - Tương tác (ngang), mở đầu album
     calendarBg: "images/detail.jpg",     // 09 Phông nền - Chi tiết, nền mờ sau lịch
     footer: "images/footer.jpg",         // 05 Cận cảnh - Ôm, hôn (dọc), kết thiệp
     album: [

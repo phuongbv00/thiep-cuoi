@@ -76,6 +76,7 @@
       var v = binds[el.getAttribute("data-bind")];
       if (v) el.textContent = v;
     });
+    setText("#heroInfo", (W.heroInfo || {})[side || "all"] || "");
     var envGuest = $("#envelopeGuest");
     if (envGuest) envGuest.hidden = !guest;
     var title = first.shortName + " & " + second.shortName + " · 29.11.2026";

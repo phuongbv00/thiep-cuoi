@@ -8,7 +8,7 @@ Chép ảnh vào thư mục này với đúng tên dưới đây (.jpg). Ảnh n
 |---|---|---|---|---|
 | `cover.jpg` | Bìa toàn màn hình | 01 Toàn thân – Đứng | Dọc | Ảnh đẹp nhất. Nửa dưới bị phủ chữ tên + ngày, nên chọn ảnh có mặt ở 1/3 trên |
 | `portrait.jpg` | Khung vòm "Mãi bên nhau" | 03 Bán thân – Chính diện | Dọc 3:4 | Hai người đứng sát nhau, nhìn thẳng |
-| `couple.jpg` | Phía trên lời mời | 02 Toàn thân – Tương tác | **Ngang** 4:3 | Ảnh nắm tay / đi cùng nhau |
+| `couple.jpg` | Ảnh lớn mở đầu Album | 02 Toàn thân – Tương tác | **Ngang** 4:3 | Ảnh nắm tay / đi cùng nhau |
 | `detail.jpg` | Nền mờ phía sau lịch | 09 Phông nền – Chi tiết | Ngang | Hiển thị rất mờ, chọn ảnh ít chi tiết, không có mặt người |
 | `footer.jpg` | Kết thiệp "Thank you" | 05 Cận cảnh – Ôm, hôn | Dọc | Nửa dưới bị phủ chữ |
 
