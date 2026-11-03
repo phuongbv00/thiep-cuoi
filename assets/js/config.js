@@ -81,24 +81,29 @@ window.WEDDING = {
   },
 
   /*
-   * ẢNH — chỉ cần chép ảnh vào thư mục images/ đúng tên dưới đây.
+   * ẢNH — chép ảnh vào thư mục images/ đúng tên dưới đây.
    * Ảnh nào chưa có sẽ tự hiện khung placeholder.
+   * Gợi ý nhóm ảnh nằm ở cuối mỗi dòng (xem thêm images/README.md).
    */
   photos: {
-    cover: "images/cover.jpg",   // ảnh dọc, dùng cho bìa
-    portrait: "images/portrait.jpg", // ảnh đôi dọc, khung vòm ở mục Cô dâu & Chú rể
-    couple: "images/couple.jpg", // ảnh ngang, dùng cho phần lời mời
-    footer: "images/footer.jpg", // ảnh kết thiệp
+    cover: "images/cover.jpg",           // 01 Toàn thân - Đứng (dọc)
+    portrait: "images/portrait.jpg",     // 03 Bán thân - Chính diện (dọc), khung vòm
+    couple: "images/couple.jpg",         // 02 Toàn thân - Tương tác (ngang), trên lời mời
+    calendarBg: "images/detail.jpg",     // 09 Phông nền - Chi tiết, nền mờ sau lịch
+    footer: "images/footer.jpg",         // 05 Cận cảnh - Ôm, hôn (dọc), kết thiệp
     album: [
-      "images/album-01.jpg",
-      "images/album-02.jpg",
-      "images/album-03.jpg",
-      "images/album-04.jpg",
-      "images/album-05.jpg",
-      "images/album-06.jpg",
-      "images/album-07.jpg",
-      "images/album-08.jpg",
-      "images/album-09.jpg",
+      "images/album-01.jpg", // ô lớn  · 04 Bán thân - Nghiêng, nhìn nhau
+      "images/album-02.jpg", //          06 Pose - Nhẫn
+      "images/album-03.jpg", //          08 Cô dâu solo
+      "images/album-04.jpg", //          07 Set hoa - Ngồi
+      "images/album-05.jpg", //          06 Pose - Bó hoa
+      "images/album-06.jpg", //          05 Cận cảnh - Ôm
+      "images/album-07.jpg", // ô lớn  · 02 Toàn thân - Tương tác
+      "images/album-08.jpg", //          08 Cô dâu solo
+      "images/album-09.jpg", //          05 Cận cảnh - Hôn
+      "images/album-10.jpg", //          07 Set hoa - Nằm
+      "images/album-11.jpg", //          04 Bán thân - Nhìn nhau
+      "images/album-12.jpg", //          06 Pose - Giơ tay
     ],
   },
 
