@@ -8,7 +8,7 @@ Website thiệp cưới tĩnh (HTML/CSS/JS thuần, không cần build), nền m
 - Thông tin lễ/tiệc theo từng bên, nút **Chỉ đường** (Google Maps) và **Lưu vào lịch** (Google Calendar), bản đồ nhúng
 - Lịch tháng 11/2026 + đồng hồ đếm ngược
 - Album ảnh có xem phóng to
-- Nhạc nền (Canon in D – Pachelbel, bản piano tự tổng hợp, không vướng bản quyền), hiệu ứng cánh hoa rơi
+- Nhạc nền ("Lễ Đường" – Kai Đinh), hiệu ứng cánh hoa rơi
 
 ## Link gửi khách
 | Link | Hiển thị |
