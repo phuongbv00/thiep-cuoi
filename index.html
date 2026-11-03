@@ -75,24 +75,13 @@
     <!-- ========== CÔ DÂU & CHÚ RỂ ========== -->
     <section class="section couple reveal">
       <h3 class="section__title script">Cô dâu &amp; Chú rể</h3>
-      <div class="couple__grid">
-        <figure class="person">
-          <div class="photo photo--portrait" data-photo="groom" data-label="Ảnh chú rể"></div>
-          <figcaption>
-            <span class="person__role">Chú rể</span>
-            <span class="script person__name" data-bind="groomName"></span>
-            <span class="person__bio" data-bind="groomBio"></span>
-          </figcaption>
-        </figure>
-        <figure class="person">
-          <div class="photo photo--portrait" data-photo="bride" data-label="Ảnh cô dâu"></div>
-          <figcaption>
-            <span class="person__role">Cô dâu</span>
-            <span class="script person__name" data-bind="brideName"></span>
-            <span class="person__bio" data-bind="brideBio"></span>
-          </figcaption>
-        </figure>
-      </div>
+      <figure class="duo">
+        <div class="duo__frame">
+          <div class="photo photo--arch" data-photo="portrait" data-label="Ảnh đôi (dọc)"></div>
+        </div>
+        <figcaption class="duo__names" id="duoNames"></figcaption>
+      </figure>
+      <p class="duo__quote">“Tình yêu không phải là nhìn nhau,<br />mà là cùng nhau nhìn về một hướng.”</p>
     </section>
 
     <!-- ========== LỜI MỜI & SỰ KIỆN ========== -->

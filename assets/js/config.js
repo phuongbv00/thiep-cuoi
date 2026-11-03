@@ -17,7 +17,6 @@ window.WEDDING = {
     mother: "Lê Thị Thuý Nga",
     // Địa chỉ nhà trai (để trống nếu không muốn hiển thị)
     address: "",
-    bio: "", // vài dòng giới thiệu chú rể (tuỳ chọn)
   },
   bride: {
     fullName: "Nguyễn Hương Giang",
@@ -25,7 +24,6 @@ window.WEDDING = {
     father: "Nguyễn Cao Sơn",
     mother: "Ngô Thị Hạnh",
     address: "",
-    bio: "",
   },
 
   // Mốc đếm ngược (giờ Việt Nam)
@@ -88,8 +86,7 @@ window.WEDDING = {
    */
   photos: {
     cover: "images/cover.jpg",   // ảnh dọc, dùng cho bìa
-    groom: "images/groom.jpg",   // ảnh chân dung chú rể
-    bride: "images/bride.jpg",   // ảnh chân dung cô dâu
+    portrait: "images/portrait.jpg", // ảnh đôi dọc, khung vòm ở mục Cô dâu & Chú rể
     couple: "images/couple.jpg", // ảnh ngang, dùng cho phần lời mời
     footer: "images/footer.jpg", // ảnh kết thiệp
     album: [
