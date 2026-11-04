@@ -26,8 +26,6 @@
     brideFamily: "Nhà gái",
     mr: "Ông",
     mrs: "Bà",
-    groom: "Chú rể",
-    bride: "Cô dâu",
     guestDefault: "Quý khách",
     inviteGroom: "Tới dự bữa tiệc chung vui cùng gia đình chúng tôi tại Hà Nội",
     inviteBride: "Tới dự bữa tiệc chung vui cùng gia đình chúng tôi tại Thái Nguyên",
@@ -60,9 +58,8 @@
       "</div>"
     );
   }
-  function personName(role, p) {
-    return '<div class="couple-names__item"><span class="couple-names__role">' + esc(role) +
-      '</span><span class="couple-names__name">' + esc(upper(p.fullName)) + "</span></div>";
+  function personName(p) {
+    return '<div class="couple-names__item"><span class="couple-names__name">' + esc(upper(p.fullName)) + "</span></div>";
   }
 
   function renderStatic() {
@@ -86,8 +83,8 @@
     var famBride = familyCol(t("brideFamily"), W.bride);
     setHTML("#families", side === "bride" ? famBride + famGroom : famGroom + famBride);
 
-    var groomHtml = personName(t("groom"), W.groom);
-    var brideHtml = personName(t("bride"), W.bride);
+    var groomHtml = personName(W.groom);
+    var brideHtml = personName(W.bride);
     setHTML("#coupleNames",
       (side === "bride" ? brideHtml : groomHtml) +
       '<div class="couple-names__heart">&amp;</div>' +
