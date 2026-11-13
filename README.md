@@ -7,7 +7,7 @@ Website thiệp cưới tĩnh (HTML/CSS/JS thuần, không cần build), nền m
 - Bìa ảnh + Save the date, thông tin hai bên gia đình, cô dâu & chú rể
 - Thông tin lễ/tiệc theo từng bên, nút **Chỉ đường** (Google Maps) và **Lưu vào lịch** (Google Calendar), bản đồ nhúng
 - Lịch tháng 11/2026 + đồng hồ đếm ngược
-- Album 30 ảnh (lưới dùng ảnh thu nhỏ, bấm xem ảnh gốc)
+- Album 26 ảnh, cùng 4 ảnh ở bìa, khung vòm, ảnh ngang và kết thiệp là đủ 30 ảnh, không lặp (lưới dùng ảnh thu nhỏ, bấm xem ảnh lớn)
 - Nhạc nền ("Lễ Đường" – Kai Đinh), hiệu ứng cánh hoa rơi
 
 ## Link gửi khách

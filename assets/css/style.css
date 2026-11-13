@@ -303,6 +303,9 @@ button { font: inherit; cursor: pointer; }
 /* Mỗi 6 ảnh: 1 ô lớn (trái, rồi phải xen kẽ) + 5 ô nhỏ */
 .gallery__item:nth-child(12n+1) { grid-column: 1 / span 2; grid-row: span 2; aspect-ratio: auto; }
 .gallery__item:nth-child(12n+7) { grid-column: 2 / span 2; grid-row: span 2; aspect-ratio: auto; }
+/* Khối cuối chỉ có 2 ảnh (số ảnh chia 6 dư 2): ô lớn vuông + ô cao bên cạnh, không trống ô */
+.gallery .gallery__item--endsq { aspect-ratio: 1; }
+.gallery .gallery__item--tall { grid-row: span 2; aspect-ratio: auto; }
 .gallery__item::after { font-size: 0.72rem; }
 .gallery__item.loaded img { transition: transform 0.5s, opacity 0.6s; }
 .gallery__item.loaded:hover img { transform: scale(1.05); }

@@ -242,6 +242,11 @@
     gallery.appendChild(el);
     loadPhoto(el, thumbOf(src), src);
   });
+  var galleryItems = $$(".gallery__item", gallery);
+  if (galleryItems.length % 6 === 2) {
+    galleryItems[galleryItems.length - 2].classList.add("gallery__item--endsq");
+    galleryItems[galleryItems.length - 1].classList.add("gallery__item--tall");
+  }
 
   /* ---------- Lightbox ---------- */
   var lb = $("#lightbox"), lbImg = $("img", lb), lbIndex = 0;
