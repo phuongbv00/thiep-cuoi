@@ -12,21 +12,21 @@
 | `detail.jpg` | Nền mờ phía sau lịch | cắt tường hoa từ 1M4A4073 | 1200px |
 | `footer.jpg` | Kết thiệp "Thank you" | 1M4A4622 | 1600px |
 
-## Album (18 ảnh)
+## Album (30 ảnh, đủ cả bộ ảnh cưới)
 
-Bố cục lặp mỗi 6 ảnh: 1 ô lớn + 5 ô nhỏ (ô lớn: 01, 07, 13).
+Bố cục lặp mỗi 6 ảnh: 1 ô lớn + 5 ô nhỏ (ô lớn: 01, 07, 13, 19, 25).
 
 - `album-XX.jpg`: bản xem phóng to, cạnh dài 1400px.
 - `thumbs/album-XX.jpg`: bản thu nhỏ 720px cho lưới album (~30KB/ảnh). Thiếu thumb thì tự dùng bản lớn.
 
-| File | Ảnh gốc | File | Ảnh gốc | File | Ảnh gốc |
-|---|---|---|---|---|---|
-| 01 | 4093 | 07 | 4260 | 13 | 4058 |
-| 02 | 3880 | 08 | 4073 | 14 | 4162 |
-| 03 | 4135 | 09 | 4635 | 15 | 4031 |
-| 04 | 3894 | 10 | 4014 | 16 | 4428 |
-| 05 | 4558 | 11 | 4556 | 17 | 4269 |
-| 06 | 4370 | 12 | 4297 | 18 | 3695 |
+| File | Ảnh gốc | File | Ảnh gốc | File | Ảnh gốc | File | Ảnh gốc | File | Ảnh gốc |
+|---|---|---|---|---|---|---|---|---|---|
+| 01 | 4093 | 07 | 4260 | 13 | 4058 | 19 | 4266 | 25 | 4622 |
+| 02 | 3880 | 08 | 4073 | 14 | 4162 | 20 | 4156 | 26 | 3882 |
+| 03 | 4135 | 09 | 4635 | 15 | 4031 | 21 | 4197 | 27 | 4219 |
+| 04 | 3894 | 10 | 4014 | 16 | 4428 | 22 | 3835 | 28 | 3886 |
+| 05 | 4558 | 11 | 4556 | 17 | 4269 | 23 | 4417 | 29 | 4223 |
+| 06 | 4370 | 12 | 4297 | 18 | 3695 | 24 | 4094 | 30 | 4036 |
 
 Muốn thêm/bớt ảnh album: sửa danh sách `album` trong `assets/js/config.js` (nên là bội số của 6) và tạo thêm thumb tương ứng.
 
