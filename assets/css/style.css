@@ -160,9 +160,16 @@ button { font: inherit; cursor: pointer; }
   position: absolute; left: 0; right: 0; bottom: 0;
   padding: 120px 20px 20px;
   text-align: center;
-  background: linear-gradient(to top, var(--cream) 18%, rgba(252, 251, 248, 0.85) 45%, transparent);
+  /* quầng sáng kem sau khối chữ (ảnh hai bên vẫn rõ) + lớp phủ dọc từ dưới lên */
+  background:
+    radial-gradient(ellipse 62% 48% at 50% 56%, rgba(252, 251, 248, 0.78), rgba(252, 251, 248, 0.4) 55%, transparent 80%),
+    linear-gradient(to top, var(--cream) 20%, rgba(252, 251, 248, 0.88) 48%, rgba(252, 251, 248, 0.45) 72%, transparent);
 }
-.hero__kicker { font-family: var(--serif); font-style: italic; letter-spacing: 0.25em; text-transform: uppercase; font-size: 0.8rem; color: var(--gold); }
+.hero__kicker, .hero__names {
+  /* viền sáng mờ để nét chữ tách khỏi nền ảnh */
+  text-shadow: 0 0 2px rgba(252, 251, 248, 0.9), 0 0 10px rgba(252, 251, 248, 0.95), 0 0 22px rgba(252, 251, 248, 0.8);
+}
+.hero__kicker { font-family: var(--serif); font-style: italic; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; font-size: 0.8rem; color: var(--gold); }
 .hero__names { font-size: 3.2rem; line-height: 1.1; margin: 8px 0; color: var(--ink); }
 .hero__names span { display: block; white-space: nowrap; }
 .hero__names .amp { font-size: 1.9rem; line-height: 1; margin: 2px 0; }
