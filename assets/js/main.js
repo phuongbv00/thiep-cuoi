@@ -213,32 +213,39 @@
 
 
   /* ---------- Ảnh (tự hiện placeholder nếu chưa có) ---------- */
-  function loadPhoto(el, src) {
+  // Ảnh bìa tải ngay, các ảnh còn lại tải lười. fallback: dùng khi src lỗi (vd. thiếu ảnh thu nhỏ)
+  function loadPhoto(el, src, fallback) {
     if (!src) return;
     var img = new Image();
     img.alt = el.getAttribute("data-label") || "";
     img.decoding = "async";
+    if (!el.classList.contains("photo--hero")) img.loading = "lazy";
     img.onload = function () { el.classList.add("loaded"); };
-    img.onerror = function () { img.remove(); };
+    img.onerror = function () {
+      if (fallback && img.getAttribute("src") !== fallback) { img.src = fallback; return; }
+      img.remove();
+    };
     img.src = src;
     el.appendChild(img);
   }
   $$("[data-photo]").forEach(function (el) { loadPhoto(el, W.photos[el.getAttribute("data-photo")]); });
 
+  // Lưới album dùng ảnh thu nhỏ trong images/thumbs/, bấm xem phóng to mới tải ảnh gốc
+  function thumbOf(src) { return src.replace(/([^\/]+)$/, "thumbs/$1"); }
   var gallery = $("#gallery");
   (W.photos.album || []).forEach(function (src, i) {
     var el = document.createElement("button");
     el.type = "button";
     el.className = "photo gallery__item";
     el.setAttribute("data-label", "Ảnh " + (i + 1));
-    el.setAttribute("data-index", i);
+    el.setAttribute("data-full", src);
     gallery.appendChild(el);
-    loadPhoto(el, src);
+    loadPhoto(el, thumbOf(src), src);
   });
 
   /* ---------- Lightbox ---------- */
   var lb = $("#lightbox"), lbImg = $("img", lb), lbIndex = 0;
-  function loadedAlbum() { return $$(".gallery__item.loaded img", gallery).map(function (i) { return i.src; }); }
+  function loadedAlbum() { return $$(".gallery__item.loaded", gallery).map(function (el) { return el.getAttribute("data-full"); }); }
   function showLb(i) {
     var list = loadedAlbum();
     if (!list.length) return;
@@ -249,7 +256,7 @@
   gallery.addEventListener("click", function (e) {
     var item = e.target.closest(".gallery__item.loaded");
     if (!item) return;
-    showLb(loadedAlbum().indexOf($("img", item).src));
+    showLb(loadedAlbum().indexOf(item.getAttribute("data-full")));
   });
   $(".lightbox__close", lb).addEventListener("click", function () { lb.hidden = true; });
   $(".lightbox__prev", lb).addEventListener("click", function () { showLb(lbIndex - 1); });
