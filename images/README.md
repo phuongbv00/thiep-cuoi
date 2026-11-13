@@ -6,8 +6,8 @@
 
 | Tên file | Vị trí trên thiệp | Ảnh gốc | Cạnh dài |
 |---|---|---|---|
-| `cover.jpg` | Bìa toàn màn hình (được preload) | 1M4A4036 | 1800px |
-| `portrait.jpg` | Khung vòm "Mãi bên nhau" | 1M4A3882 | 1600px |
+| `cover.jpg` | Bìa toàn màn hình (được preload) | 1M4A3882 | 1800px |
+| `portrait.jpg` | Khung vòm "Mãi bên nhau" | 1M4A4036 | 1600px |
 | `couple.jpg` | Ảnh ngang mở đầu Album | 1M4A3886 | 1600px |
 | `detail.jpg` | Nền mờ phía sau lịch | cắt tường hoa từ 1M4A4073 | 1200px |
 | `footer.jpg` | Kết thiệp "Thank you" | 1M4A4622 | 1600px |
