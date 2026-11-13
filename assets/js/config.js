@@ -96,7 +96,7 @@ window.WEDDING = {
    * Gợi ý nhóm ảnh nằm ở cuối mỗi dòng (xem thêm images/README.md).
    */
   photos: {
-    cover: "images/cover.jpg?v=2",           // 01 Toàn thân - Đứng (dọc)
+    cover: "images/cover.jpg?v=3",           // 01 Toàn thân - Đứng (dọc)
     portrait: "images/portrait.jpg?v=2",     // 03 Bán thân - Chính diện (dọc), khung vòm "Mãi bên nhau"
     couple: "images/couple.jpg",         // 02 Toàn thân - Tương tác (ngang), mở đầu album
     calendarBg: "images/detail.jpg",     // 09 Phông nền - Chi tiết, nền mờ sau lịch
