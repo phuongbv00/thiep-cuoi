@@ -41,5 +41,5 @@ convert album-19.jpg -resize 720x720 -strip -interlace JPEG -quality 76 thumbs/a
 
 ## Ảnh xem trước khi chia sẻ link
 
-`og-image.jpg` (1200×630) hiện khi gửi link qua Zalo, Messenger, Facebook (hiện là bản thiết kế chữ).
+`og-image.jpg` (1200×630) hiện khi gửi link qua Zalo, Messenger, Facebook, cắt từ ảnh gốc 1M4A3886. Khi thay ảnh này, tăng số `?v=` của `og-image.jpg` trong `index.html` để các app không dùng ảnh cũ đã lưu.
 `apple-touch-icon.png` là biểu tượng khi khách lưu thiệp ra màn hình chính.
